@@ -3,30 +3,25 @@ N, tårn = map(int, input().split())
 bakke = [int(x) for x in input().split()]
 
 for _ in range(tårn):
-
     x, y = map(int, input().split())
     fin1, fin2 = False, False
 
-    
-    for i in range(y):
-        i = -i -1
+    for i in range(1, y+1):
+        i = -i
         if (not fin1):
-            if x+i < 0: 
+            if x+i < 0 or bakke[x+(i)] > y+(i): 
+                # print("\n","lll" ,i, bakke[x+i], y+i, y-i, )
                 fin1 = True
-            elif bakke[x+(i)] > y+(i):
-                fin1 = True
+
         i = -i
         if (not fin2):
-            if x+i >= N:
+            if x+i >= N or bakke[x+(i)] > y-(i): 
+                # print("\n","ada", i, bakke[x+i], y+i, y-i)
                 fin2 = True
-            elif bakke[x+(i)] > y-(i):
-                fin2 = True
-                ...
 
         if fin1 and fin2:
             i -= 1
             break
-
     print(i)
 
 
